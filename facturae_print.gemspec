@@ -12,8 +12,10 @@ Gem::Specification.new do |s|
   s.summary     = %q{facturae_print translates a facturae xml file into an understandable HTML or PDF file}
   s.description = %q{facturae_print translates a facturae xml file into an understandable HTML or PDF file}
 
-  s.rubyforge_project = "facturae_print"
-
+  s.add_dependency("nokogiri", "~> 1.4.4")
+  
+  s.add_development_dependency("rspec", "~> 2.4.0")
+  
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
