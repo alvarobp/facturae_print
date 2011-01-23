@@ -6,13 +6,20 @@ module FacturaePrint
       return node.text if node.text?
       
       children = get_node_children(node)
+      return nil if children.empty? && node.content.empty?
       
       if children.size == 1 && children.first.text?
         children.first.text
       else
         object = options.delete(:object) || OpenStruct.new
         children.each do |child|
-          object.send("#{child.name.underscore}=", options[:collection_nodes].include?(child.name) ? get_node_children(child).map{|c| build(c, options)} : build(child, options))
+          value = if options[:collection_nodes].include?(child.name)
+            get_node_children(child).map{|c| build(c, options)}
+          else 
+            build(child, options)
+          end
+          
+          object.send("#{child.name.underscore}=", value)
         end
         object
       end

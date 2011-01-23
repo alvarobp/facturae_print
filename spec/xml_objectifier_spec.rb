@@ -44,7 +44,14 @@ describe FacturaePrint::XMLObjectifier do
   it "should underscore node names" do
     xml = "<Person><PersonName>Ronald</PersonName></Person>"
     object = FacturaePrint::XMLObjectifier.build(Nokogiri::XML(xml))
-    object.person.person_name = "Ronald"
+    object.person.person_name.should == "Ronald"
+  end
+  
+  it "should ignore empty nodes" do
+    xml = "<Person><PersonName>Ronald</PersonName><PersonSurname/></Person>"
+    object = FacturaePrint::XMLObjectifier.build(Nokogiri::XML(xml))
+    object.person.person_name.should == "Ronald"
+    object.person.person_surname.should be_nil
   end
   
   it "should build on a given object" do
