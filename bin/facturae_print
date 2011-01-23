@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+require 'facturae_print'
+require 'facturae_print/cli'
+
+FacturaePrint::CLI.start

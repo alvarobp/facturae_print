@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.add_dependency("erubis", ">= 2.6.6")
   s.add_dependency("wkhtmltopdf-binary", ">= 0.9.5.1")
   s.add_dependency("pdfkit", ">= 0.5.0")
+  s.add_dependency("thor", ">= 0.14.6")
   
   s.add_development_dependency("rspec", "~> 2.4.0")
   
