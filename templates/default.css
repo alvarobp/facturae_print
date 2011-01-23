@@ -1,0 +1,127 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+dl {
+  margin: 0;
+  overflow: hidden;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.header h1 {
+  margin-top: -5px;
+  font-size: 35px;
+  color: #666;
+}
+
+.seller-data .name,
+.buyer-data .name {
+  font-size: 1.2em;
+  padding-bottom: 5px;
+}
+
+.seller-data p,
+.buyer-data p {
+  margin: 0;
+}
+
+.invoice-header-data dl dt,
+.invoice-header-data dl dd,
+.buyer-data dt,
+.buyer-data dd {
+  float: left;
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.invoice-header-data dl dt,
+.buyer-data dl dt {
+  clear: left;
+  width: 150px;
+  font-weight: bold;
+}
+
+.invoice-header-data {
+  overflow: hidden;
+  margin: 30px 0 25px 0;
+}
+
+.buyer-data {
+  padding-bottom: 40px;
+}
+
+.invoice-details {
+  width: 100%;
+  border-collapse:collapse;
+  border-bottom: 1px solid #000;
+}
+
+.invoice-details .col1 {
+  width: 80%;
+}
+
+.invoice-details .col2 {
+  width: 20%
+}
+
+.invoice-details th {
+  padding: 5px 0;
+  border: 1px solid #000;
+}
+
+.invoice-details td {
+  padding: 10px 20px;
+}
+
+.invoice-details .description {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
+
+.invoice-details .amount {
+  text-align: right;
+  border-right: 1px solid #000;
+}
+
+.invoice-details .invoice-subtotal td {
+  border-top: 1px solid #000;
+}
+
+.invoice-details .invoice-taxes td {
+  padding-top: 0px;
+}
+
+.invoice-details .invoice-subtotal .description,
+.invoice-details .invoice-taxes .description,
+.invoice-details .invoice-total .description {
+  text-align: right;
+}
+
+.invoice-details .invoice-taxes .description,
+.invoice-details .invoice-total .description {
+  font-weight: bold;
+}
+
+.invoice-details .invoice-total td {
+  border-top: 1px solid #000;
+}
+
+.footer {
+  margin-top: 40px;
+}

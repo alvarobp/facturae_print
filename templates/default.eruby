@@ -1,0 +1,86 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="./default.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <h1>Factura</h1>
+    </div>
+    <div class="seller-data">
+      <p class="name"><%= individual_full_name(@invoice.parties.seller_party.individual) %></p>
+      <p><%= @invoice.parties.seller_party.individual.address_in_spain.address %></p>
+      <p><%= @invoice.parties.seller_party.individual.address_in_spain.post_code %> <%= @invoice.parties.seller_party.individual.address_in_spain.town %></p>
+      <p><%= @invoice.parties.seller_party.tax_identification.tax_identification_number %></p>
+    </div>
+    <div class="invoice-header-data">
+      <dl>
+        <dt>Factura num.</dt>
+        <dd><%= @invoice.invoices.first.invoice_header.invoice_number %></dd>
+        <dt>Fecha factura</dt>
+        <dd><%= @invoice.invoices.first.invoice_issue_data.issue_date %></dd>
+      </dl>
+    </div>
+    <div class="buyer-data">
+      <dl>
+        <dt>Facturar a</dt>
+        <dd>
+          <p class="name"><%= @invoice.parties.buyer_party.legal_entity.corporate_name %></p>
+          <p><%= @invoice.parties.buyer_party.legal_entity.address_in_spain.address %></p>
+          <p><%= @invoice.parties.buyer_party.legal_entity.address_in_spain.post_code %> <%= @invoice.parties.buyer_party.legal_entity.address_in_spain.town %></p>
+          <p><%= @invoice.parties.buyer_party.tax_identification.tax_identification_number %></p>
+        </dd>
+    </div>
+    <table class="invoice-details">
+      <colgroup>
+        <col class="col1"/>
+        <col class="col2"/>
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Concepto</th>
+          <th>Importe</th>
+        </tr>
+      </thead>
+      <tbody class="invoice-items">
+        <% for item in @invoice.invoices.first.items %>
+        <tr>
+          <td class="description"><%= item.item_description %></td>
+          <td class="amount"><%= to_currency(item.total_cost) %></td>
+        </tr>
+        <% end %>
+        <% (8 - @invoice.invoices.first.items.size).times do %>
+        <tr><td class="description"></td><td class="amount"></td></tr>
+        <% end %>
+      </tbody>
+      <tbody class="invoice-subtotal">
+        <tr>
+          <td class="description">Base imponible</td>
+          <td class="amount"><%= to_currency(@invoice.invoices.first.invoice_totals.total_gross_amount_before_taxes) %></td>
+        </tr>
+      </tbody>
+      <tbody class="invoice-taxes">
+        <tr>
+          <td class="description">IRPF 15%</td>
+          <td class="amount">-97.50 €</td>
+        </tr>
+      </tbody>
+      <tbody class="invoice-total">
+        <tr>
+          <td class="description">TOTAL</td>
+          <td class="amount"><%= to_currency(@invoice.invoices.first.invoice_totals.invoice_total) %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="footer">
+      <p>Pago: 30 días de factura</p>
+      <p>
+        Transferencia bancaria:<br/>
+        1234 5678 90 1234567890
+      </p>
+    </div>
+  </div>
+</body>
+</html>

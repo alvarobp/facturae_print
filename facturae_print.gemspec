@@ -12,7 +12,8 @@ Gem::Specification.new do |s|
   s.summary     = %q{facturae_print translates a facturae xml file into an understandable HTML or PDF file}
   s.description = %q{facturae_print translates a facturae xml file into an understandable HTML or PDF file}
 
-  s.add_dependency("nokogiri", "~> 1.4.4")
+  s.add_dependency("nokogiri", ">= 1.4.4")
+  s.add_dependency("erubis", ">= 2.6.6")
   
   s.add_development_dependency("rspec", "~> 2.4.0")
   
