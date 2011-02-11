@@ -25,6 +25,36 @@ module FacturaePrint
       def formatted_date(date, strftime="%d/%m/%Y")
         (date.is_a?(String) ? Date.parse(date) : date).strftime(strftime)
       end
+      
+      def tax_abbreviation(tax_type_code)
+        TAX_ABBREVIATIONS[tax_type_code]
+      end
+      
+      def tax_description(tax_type_code, tax_rate)
+        "#{tax_abbreviation(tax_type_code)} #{tax_rate.to_i}%"
+      end
+      
+      TAX_ABBREVIATIONS = {
+        '01' => 'IVA',
+        '02' => 'IPSI',
+        '03' => 'IGIC',
+        '04' => 'IRPF',
+        '05' => 'Otro',
+        '06' => 'ITPAJD',
+        '07' => 'IE',
+        '08' => 'Ra',
+        '09' => 'IGTECM',
+        '10' => 'IECDPCAC',
+        '11' => 'IIIMAB',
+        '12' => 'ICIO',
+        '13' => 'IMVDN',
+        '14' => 'IMSN',
+        '15' => 'IMGSN',
+        '16' => 'IMPN',
+        '17' => 'REIVA',
+        '18' => 'REIGIC',
+        '19' => 'REIPSI'
+      }
     end
   end
 end

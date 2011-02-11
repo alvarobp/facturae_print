@@ -62,10 +62,12 @@
         </tr>
       </tbody>
       <tbody class="invoice-taxes">
+        <% for tax in @invoice.invoices.first.taxes_outputs %>
         <tr>
-          <td class="description">IRPF 15%</td>
-          <td class="amount">-97.50 €</td>
+          <td class="description"><%= tax_description(tax.tax_type_code, tax.tax_rate) %></td>
+          <td class="amount"><%= to_currency(tax.tax_amount.total_amount) %></td>
         </tr>
+        <% end %>
       </tbody>
       <tbody class="invoice-total">
         <tr>
