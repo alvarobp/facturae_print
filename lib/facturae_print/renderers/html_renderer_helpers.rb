@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'date'
 
 module FacturaePrint
@@ -11,8 +12,10 @@ module FacturaePrint
       
       def currency_symbol(currency_code)
         case currency_code
-        when "EUR": "€"
-        when "USD": "$"
+        when "EUR"
+          "€"
+        when "USD"
+          "$"
         else
           currency_code
         end
